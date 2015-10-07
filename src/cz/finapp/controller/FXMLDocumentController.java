@@ -10,7 +10,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 
 /**
  *
@@ -18,15 +21,47 @@ import javafx.scene.control.Label;
  */
 public class FXMLDocumentController implements Initializable {
     
-    @FXML
-    private Label label;
+
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+    private Label labelDate;
     
+    @FXML
+    private Label labelOverall;
+        
+    @FXML
+    private Label labelOverallPrice;
+    @FXML
+    private ChoiceBox chbDay;
+    
+    @FXML
+    private ChoiceBox chbMonth;
+    
+    @FXML
+    private ChoiceBox chbYear;
+    
+    @FXML
+    private Button btnCosts;
+    
+    @FXML
+    private Button btnSearch;
+    
+    @FXML
+    private Button btnInsert;
+      
+    @FXML
+    private Button btnUpdate;
+ 
+    @FXML
+    private Button btnDelete;
+  
+   @FXML
+   private TableView costsTableViev;
+   
+   
+   
+   
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
