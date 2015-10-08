@@ -15,15 +15,14 @@ import javafx.collections.ObservableList;
  * @author Johny
  */
 public class Date {
+
     
-    
-        
     //Atributy
     private int day = 1;
     private int month;
     private int year;
     
-    
+    Calendar cl = Calendar.getInstance();
     
     /**  Vrací počet dní v danym měsíci
      * @param day   
@@ -31,32 +30,110 @@ public class Date {
      * @return 
     */
     
-    public ArrayList<Integer> getDays(int month, int year) 
+    public ArrayList<Integer> getDays(int month, int year) throws NullPointerException
     {
         ArrayList<Integer> listOfDays = new ArrayList <Integer>();
-        Calendar cl = new GregorianCalendar(this.day, month, year);
+        Calendar clGre = new GregorianCalendar(year, month, this.day);
         
-        int count = cl.getActualMaximum(Calendar.DAY_OF_MONTH);
+        try {
         
+        int count = clGre.getActualMaximum(Calendar.DAY_OF_MONTH);
         //Zavolání cyklu
+        listOfDays = fillList(count);
         
+        } catch (Exception ex) {
         
-        
-//        //Podmínka přestupního roku, měsíci únor se přidá o jeden den navíc
-//        if(((year % 4 == 0 ) && (year % 100 != 0) || (year % 400 == 0)) && month == 2)
-//        {
-//            listOfDays = fillList(29);
-//        }
-//        else {
-            
-            
-            
-        
-        
-        
+            ex.printStackTrace();
+        }
+
         return listOfDays;
     }
     
+    /**
+     *  Získá list měsíců
+     * @return 
+     */
+    public ArrayList<Integer> getMonths()
+    {
+    
+        ArrayList<Integer> listOfMonths = new ArrayList<Integer>();
+        
+        try {
+        listOfMonths = fillList(12);
+    
+        } catch(Exception ex) {
+            
+            ex.printStackTrace();
+        }
+    return listOfMonths;
+    }
+    
+    
+    /**
+     *  Získá list roků
+     * @return 
+     */
+    public ArrayList<Integer> getYears()
+    {
+    
+        ArrayList<Integer> listOfYears = new ArrayList<Integer>();
+        
+         for(int i = 1999; i <= 2020; i++)
+        {   
+            listOfYears.add(i);
+        }
+    return listOfYears;
+    }
+    /**
+     * 
+     * @return 
+     */
+    public int getActualDay()
+    {
+        int actualDay = cl.get(Calendar.DAY_OF_MONTH);
+        
+        return actualDay;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    
+      public int getActualMonth()
+    {
+        int actualMonth = cl.get(Calendar.MONTH) +1;
+        
+        return  actualMonth;
+    }
+      
+    
+    /**
+     * 
+     * @return 
+     */   
+    public int getActualYear()
+    {
+        int actualYear = cl.get(Calendar.YEAR);
+        
+        return  actualYear;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /**
+     *  Metoda generující čísla
+     * @param count
+     * @return 
+     */
     private ArrayList<Integer> fillList(int count)
     {
         ArrayList<Integer> numberList = new ArrayList<Integer>();
