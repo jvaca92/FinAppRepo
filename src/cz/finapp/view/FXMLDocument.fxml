@@ -38,7 +38,7 @@
                       <columns>
                         <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="72.0" text="Purchase" fx:id="costsNameCol" />
                         <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="68.0" text="Date" fx:id="costsPriceCol" />
-                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="76.0" text="Price" fx:id="coststDateCol" />
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="76.0" text="Price" fx:id="costsDateCol" />
                       </columns>
                     </TableView>
                   </children>
@@ -47,44 +47,44 @@
               <right>
                 <AnchorPane prefHeight="276.0" prefWidth="82.0">
                   <children>
-                    <Button fx:id="btnInsert" layoutX="13.0" layoutY="14.0" mnemonicParsing="false" prefWidth="59.0" text="Insert" />
-                    <Button fx:id="btnUpdate" layoutX="13.0" layoutY="47.0" mnemonicParsing="false" text="Update" />
-                    <Button fx:id="btnDelete" layoutX="13.0" layoutY="79.0" mnemonicParsing="false" prefWidth="59.000099999997474" text="Delete" />
+                    <Button fx:id="btnInsert" layoutX="12.0" layoutY="14.0" mnemonicParsing="false" prefWidth="60.0" text="Insert" />
+                    <Button fx:id="btnUpdate" layoutX="8.0" layoutY="47.0" mnemonicParsing="false" text="Update" />
+                    <Button fx:id="btnDelete" layoutX="9.0" layoutY="79.0" mnemonicParsing="false" prefWidth="64.0" text="Delete" />
                   </children>
                 </AnchorPane>
               </right>
               <top>
                 <AnchorPane prefHeight="99.0" prefWidth="313.0">
                   <children>
-                    <Label fx:id="labelDate" layoutX="14.0" layoutY="38.0" prefWidth="43.9998779296875" text="Datum:" />
-                    <ChoiceBox fx:id="chbDay" layoutX="58.0" layoutY="36.0" prefWidth="34.000099999997474">
-                      <items>
-                        <FXCollections fx:factory="observableArrayList">
-                          <String fx:value="Item 1" />
-                          <String fx:value="Item 2" />
-                          <String fx:value="Item 3" />
-                        </FXCollections>
-                      </items>
-                    </ChoiceBox>
-                    <ChoiceBox fx:id="chbMonth" layoutX="99.0" layoutY="36.0" prefWidth="38.0">
-                      <items>
-                        <FXCollections fx:factory="observableArrayList">
-                          <String fx:value="Item 1" />
-                          <String fx:value="Item 2" />
-                          <String fx:value="Item 3" />
-                        </FXCollections>
-                      </items>
-                    </ChoiceBox>
-                    <ChoiceBox fx:id="chbYear" layoutX="143.0" layoutY="36.0">
-                      <items>
-                        <FXCollections fx:factory="observableArrayList">
-                          <String fx:value="Item 1" />
-                          <String fx:value="Item 2" />
-                          <String fx:value="Item 3" />
-                        </FXCollections>
-                      </items>
-                    </ChoiceBox>
+                    <Label fx:id="labelDate" layoutX="7.0" layoutY="38.0" prefWidth="43.9998779296875" text="Datum:" />
                     <Button fx:id="btnSearch" layoutX="243.0" layoutY="36.0" mnemonicParsing="false" text="Search" />
+                    <ComboBox fx:id="cbDay" layoutX="51.0" layoutY="35.0" minWidth="30.0" prefWidth="53.0">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Item 1" />
+                          <String fx:value="Item 2" />
+                          <String fx:value="Item 3" />
+                        </FXCollections>
+                      </items>
+                    </ComboBox>
+                    <ComboBox fx:id="cbMonth" layoutX="104.0" layoutY="35.0" minWidth="27.0" onAction="#cbMonthListener" prefWidth="53.0">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Item 1" />
+                          <String fx:value="Item 2" />
+                          <String fx:value="Item 3" />
+                        </FXCollections>
+                      </items>
+                    </ComboBox>
+                    <ComboBox fx:id="cbYear" layoutX="157.0" layoutY="35.0" onAction="#cbYearListener">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Item 1" />
+                          <String fx:value="Item 2" />
+                          <String fx:value="Item 3" />
+                        </FXCollections>
+                      </items>
+                    </ComboBox>
                   </children>
                 </AnchorPane>
               </top>

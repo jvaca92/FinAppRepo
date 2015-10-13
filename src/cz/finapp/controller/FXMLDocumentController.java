@@ -14,10 +14,15 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 
@@ -39,13 +44,13 @@ public class FXMLDocumentController implements Initializable {
     private Label labelOverallPrice;
     
     @FXML
-    private ChoiceBox chbDay;    
+    private ComboBox<Integer> cbDay;    
     
     @FXML
-    private ChoiceBox chbMonth;
+    private ComboBox<Integer>  cbMonth;
     
     @FXML
-    private ChoiceBox chbYear;
+    private ComboBox<Integer>  cbYear;
     
     @FXML
     private Button btnCosts;
@@ -65,12 +70,15 @@ public class FXMLDocumentController implements Initializable {
    @FXML
    private TableView costsTableViev;
    
+
    
    
     
    
    Date date = new Date();
 
+
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     
@@ -78,36 +86,57 @@ public class FXMLDocumentController implements Initializable {
         int actualMonth = date.getActualMonth();
         int actualYear = date.getActualYear();
         
-        //Vyplní choice box  
-        chbDay.setItems(FXCollections.observableArrayList(date.getDays(actualMonth - 1, actualYear)));
-        chbDay.setValue(actualDay);
-        chbMonth.setItems(FXCollections.observableArrayList(date.getMonths()));
-        chbMonth.setValue(actualMonth);
-        chbYear.setItems(FXCollections.observableArrayList(date.getYears()));
-        chbYear.setValue(actualYear);
+        //Vyplní combo boxy
+        cbDay.setItems(FXCollections.observableArrayList(date.getDays(actualMonth, actualYear)));
+        cbDay.setValue(actualDay);
+        cbMonth.setItems(FXCollections.observableArrayList(date.getMonths()));
+        cbMonth.setValue(actualMonth);
+        cbYear.setItems(FXCollections.observableArrayList(date.getYears()));
+        cbYear.setValue(actualYear);
+ 
     }    
     
     
     @FXML
-    private void choiceBoxListener()
+    private void cbMonthListener()
     {
-        chbMonth.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+        cbMonth.setOnAction(new EventHandler() {
 
             @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+            public void handle(Event event) {
                 
-                
-                int monthValue = (Integer) oldValue;
-                
-                System.out.println(monthValue);
-                
-                chbDay.setItems(FXCollections.observableArrayList(date.getDays(monthValue, 2015)));
+                //Hodnoty z comboboxu
+                int monthValue =  cbMonth.getSelectionModel().getSelectedItem().intValue();
+                int yearValue  = cbYear.getSelectionModel().getSelectedItem().intValue();
+
+                cbDay.setItems(FXCollections.observableArrayList(date.getDays(monthValue, yearValue)));
                 
             }
-        });
+        });    
         
-        
+
     }
+    
+    @FXML
+    private void cbYearListener()
+    {
+        cbYear.setOnAction(new EventHandler() {
+
+            @Override
+            public void handle(Event event) {
+                
+                //Hodnoty z comboboxu
+                int monthValue =  cbMonth.getSelectionModel().getSelectedItem().intValue();
+                int yearValue  = cbYear.getSelectionModel().getSelectedItem().intValue();
+
+                cbDay.setItems(FXCollections.observableArrayList(date.getDays(monthValue, yearValue)));
+                
+            }
+        });    
+        
+
+    }
+    
     
     
     

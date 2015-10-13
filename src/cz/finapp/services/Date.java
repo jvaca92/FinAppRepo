@@ -33,7 +33,7 @@ public class Date {
     public ArrayList<Integer> getDays(int month, int year) throws NullPointerException
     {
         ArrayList<Integer> listOfDays = new ArrayList <Integer>();
-        Calendar clGre = new GregorianCalendar(year, month, this.day);
+        Calendar clGre = new GregorianCalendar(year, month - 1, this.day);
         
         try {
         
