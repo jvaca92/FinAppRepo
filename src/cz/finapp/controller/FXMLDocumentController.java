@@ -17,6 +17,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import cz.finapp.services.DateFormatter;
+import java.text.ParseException;
+import javafx.event.ActionEvent;
 
 /**
  *
@@ -125,6 +128,23 @@ public class FXMLDocumentController implements Initializable {
                 
             }
         });    
+        
+
+    }
+    
+    @FXML
+   private void search()
+    {
+
+        //Získání aktuálních hodnot z comboboxu
+        int dayValue = cbDay.getValue();
+        int monthValue = cbMonth.getValue();
+        int yearValue = cbYear.getValue();
+        
+        
+        DateFormatter.formatDate(dayValue, 
+                                                   monthValue,
+                                                   yearValue);
         
 
     }

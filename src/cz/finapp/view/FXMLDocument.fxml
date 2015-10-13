@@ -57,7 +57,7 @@
                 <AnchorPane prefHeight="99.0" prefWidth="313.0">
                   <children>
                     <Label fx:id="labelDate" layoutX="7.0" layoutY="38.0" prefWidth="43.9998779296875" text="Datum:" />
-                    <Button fx:id="btnSearch" layoutX="243.0" layoutY="36.0" mnemonicParsing="false" text="Search" />
+                    <Button fx:id="btnSearch" layoutX="243.0" layoutY="36.0" mnemonicParsing="false" onAction="#search" text="Search" />
                     <ComboBox fx:id="cbDay" layoutX="51.0" layoutY="35.0" minWidth="30.0" prefWidth="53.0">
                       <items>
                         <FXCollections fx:factory="observableArrayList">
